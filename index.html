@@ -1,0 +1,3081 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Script do MathJax no <head> -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    
+    <title>Nivelamento - Matemática Nivel 1 - Unidade 2</title>
+
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .titulo-programa {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 50px;
+            color: #003974;
+            font-weight: lighter;
+        }
+
+        .titulo-materia {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 133px;
+            color: #003974;
+            font-weight: lighter;
+        }
+
+        .subtitulo-professor {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 59px;
+            color: #0058B4;
+            font-weight: lighter;
+        }
+
+        .titulo-unidade {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 60px;
+        }
+
+        .titulo-saiba-mais {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 70px;
+        }
+        /* Estilização de Bebas Neue FIM */
+
+
+        /* Estilização de Roboto INICIO */
+        .peso-1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 45px;
+        }
+
+        .texto {
+            font-family: 'Roboto', sans-serif;
+            font-size: 35px;
+        }
+
+        .sub-texto {
+            font-family: 'Roboto', sans-serif;
+            font-size: 25px;
+        }
+
+        .titulo-box {
+            font-family: 'Roboto', sans-serif;
+            font-size: 32px;
+        }
+
+        .fonte {
+            font-family: 'Roboto', sans-serif;
+            font-size: 25px;
+        }
+
+        .citacao {
+            font-family: 'Roboto', sans-serif;
+            font-size: 30px;
+            font-style: italic;
+        }
+        /* Estilização de Roboto FIM */
+
+        /* Navbar styles INICIO */
+        .navbar {
+            background-color: #9F43BE;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            position: -webkit-sticky; /* Para navegadores antigos */
+            position: sticky; /* Para manter no topo durante o scroll */
+            top: 0; /* Faz com que a navbar fique no topo */
+            z-index: 10; /* Garante que o menu fique acima de outros elementos */
+            transition: background-color 0.3s ease; /* Transição suave para o efeito */
+        }
+
+        .navbar .logo img {
+            height: 50px;/* Ajuste conforme necessário */
+            width: auto;
+        }
+
+        .navbar .menu-toggle {
+            cursor: pointer;
+            font-size: 1.5em;
+            display: block;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: none;
+            flex-direction: column;
+            background-color: #9f43be;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 200px;
+            height: auto;
+            border-radius: 5px;
+            z-index: 10; /* Garante que o menu esteja acima de outros elementos */
+        }
+
+        .navbar ul.show {
+            display: flex;
+        }
+
+        .navbar ul li {
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .navbar ul li a:hover {
+            color: #003974; /* Cor ao passar o mouse */
+        }
+        .navbar .menu-toggle i:last-child {
+            display: none; /* Esconde o ícone de fechar inicialmente */
+        }
+        
+
+         /* Navbar styles FIM */
+
+        /* Titulo styles INICIO */
+        .titulo-intro {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .titulo-intro h1 {
+            margin: 0;
+            padding: 15px;
+        }
+        /* Titulo styles FIM */
+
+        /* Estilo da Capa do Livro INICIO*/
+        .capa-livro {
+            position: relative;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden; /* Para evitar que o pseudoelemento saia do container */
+            border-top: 3px solid #003974;
+            border-bottom: 3px solid #003974;
+        }
+
+        .capa-livro::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://res.cloudinary.com/di4ria1pf/image/upload/v1759947170/IMAGEM_CAPA_iwoapi.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.40; /* Controle da opacidade */
+            z-index: -1; /* Coloca o background atrás do conteúdo */
+        }
+
+        
+
+        .capa-livro .conteudo-capa {
+            text-align: center;
+            color: white;
+            padding: 20px; /* Espaço interno para o texto */
+        }
+
+        .capa-livro .titulo-materia {
+            font-size: 80px;
+            font-family: 'Bebas Neue', cursive;
+            margin: 0;
+        }
+
+        .capa-livro .subtitulo-professor {
+            font-size: 40px;
+            font-family: 'Bebas Neue', cursive;
+            margin: 10px 0 0;
+        }
+        /* Estilo da Capa do Livro FIM*/
+
+        /* Barra Superior */
+        .barra-superior {
+            background-color: #015A42; /* Cor verde escuro */
+            width: 100%;
+            padding: 15px 15px;
+            text-align: center;
+            box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura */
+            overflow-x: hidden; /* Previne rolagem horizontal */
+        }
+
+        .barra-superior .titulo-barra {
+            font-family: 'Bebas Neue', cursive;
+            color: #FFF; /* Cor branca */
+            font-size: 50px;
+            font-weight: lighter;
+            margin: 0;
+        }
+
+        /* Conteúdo da Introdução */
+        .introducao {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            overflow-x: hidden; /* Impede rolagem horizontal */
+        }
+        
+        .introducao .titulo-introducao {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 50px;
+            font-weight: lighter;
+            color: #015A42; /* Cor verde */
+            margin: 10px auto 10px auto;
+        }
+
+        .introducao .caixa-texto {
+            width: 100%;
+            background-color: #E2F4EB; /* Verde mais claro */
+            padding: 64px 0;
+        }
+                /* Conteúdo centralizado dentro da faixa */
+        .introducao .conteudo-centralizado {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Parágrafos da introdução */
+        .introducao .conteudo-centralizado p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 19px;
+            line-height: 1.6;
+            text-align: justify;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* RESPONSIVIDADE SEÇÕES ACIMA*/
+        /* Capa do Livro - Responsividade */
+        @media (max-width: 768px) {
+            .capa-livro {
+                height: 70vh; /* Reduz a altura da capa */
+            }
+            .capa-livro::before {
+                background-position: center center; /* centraliza melhor no mobile */
+            }
+            .capa-livro .titulo-materia {
+                font-size: 40px; /* Reduz o tamanho do título */
+            }
+
+            .capa-livro .subtitulo-professor {
+                font-size: 24px; /* Reduz o tamanho do subtítulo */
+            }
+            .capa-livro .titulo-programa {
+                font-size: 18px;
+            }
+            .capa-livro .conteudo-capa {
+                padding: 15px; /* Ajusta o padding para telas menores */
+            }
+        }   
+            /* Seção Introdução - Responsividade */
+        @media (max-width: 768px) {
+            .barra-superior {
+                padding: 10px; /* Reduz o padding da barra */
+            }
+
+            .barra-superior .titulo-barra {
+                font-size: 1.6rem;
+                max-width: 800px;
+                margin: 10px 0;
+                padding: 0 30px;
+                text-align: left;
+            }
+
+            .introducao .titulo-introducao {
+                font-size: 2.8rem; /* Reduz o tamanho do título da introdução */
+                margin-top: 20px; /* Ajusta o espaçamento superior */
+            }
+
+            .introducao .caixa-texto {
+                padding: 20px; /* Reduz o padding da caixa de texto */
+                width: 100%; /* Ajusta a largura da caixa */
+            }
+
+            .introducao .caixa-texto p {
+                font-size: 1rem; /* Reduz o tamanho do texto */
+                line-height: 1.4;
+                margin-bottom: 10px; /* Ajusta a margem entre os parágrafos */
+            }
+            .introducao .conteudo-centralizado {
+                max-width: 800px;
+                margin: 10px 0;
+                padding: 0 40px;
+            }
+        }
+        /* Responsividade para o título da seção de Programa */
+        @media (max-width: 768px) {
+            .titulo-programa {
+                font-size: 50px; /* Ajuste do tamanho do título */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .titulo-programa {
+                font-size: 35px; /* Ajuste para telas muito pequenas */
+            }
+        }
+        /* Estilo base da seção */
+        .secao1 .conteudo-secao {
+            width: 100% !important;
+            padding: 64px 0 !important; /* padding vertical conforme solicitado */
+            box-sizing: border-box !important;
+        }
+        .secao1 .acordeon-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .secao1 .tabs-section {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        /* Estilo base da seção */
+        .secao1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #9f43be11;
+            padding: 20px;
+        }
+        .secao1 .outer-container-alt {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+       }
+        /* Imagem de topo */
+        .secao1 .imagem-topo {
+            width: 100%;
+            height: auto;
+            max-height: 290px; /* ajuste essa altura conforme necessário */
+            object-fit: cover; /* garante que a imagem preencha sem distorcer */
+            display: block;
+            margin: 0;
+            padding: 0;
+            background-color: #FFF;
+        }
+
+        /* Faixa verde */
+        .secao1 .faixa-verde {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        .secao1 .faixa-verde .titulo-secao {
+            font-size: 25px;
+            font-family: 'Roboto', sans-serif;
+            color: #015A42; /* Cor verde */
+            width: 90%;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+        }
+        .secao1 .titulo-verde {
+            font-size: 20px;
+            font-family: 'Roboto', sans-serif;
+            color: #015A42; /* Cor verde */
+            width: 90%;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+        }
+        /* Parágrafo padrão */
+        .secao1 p {
+            font-size: 19px;
+            text-align: justify;
+            line-height: 1.6;
+            color: #333;
+            margin: 10px auto;
+            width: 90%;
+            max-width: 800px;    
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .secao1 .faixa-verde .titulo-secao {
+                font-size: 20px;
+            }
+
+            .secao1 p {
+                font-size: 1rem;
+            }
+            .secao1 .imagem-topo {
+                max-height: 180px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .secao1 .faixa-verde .titulo-secao {
+                font-size: 20px;
+            }
+
+            .secao1 p {
+                font-size: 0.95rem;
+            }
+        }
+        /* Estilo base da seção */
+        .secao2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff;
+        }
+        .secao2 .conteudo-secao {
+            width: 100%;
+            padding: 64px 0;
+            box-sizing: border-box;
+        }
+        .secao2 .acordeon-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 10px auto;
+        }
+       .secao2 .outer-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+       }
+        /* Imagem de topo */
+        .secao2 .imagem-topo {
+            width: 100%;
+            height: auto;
+            max-height: 290px; /* ajuste essa altura conforme necessário */
+            object-fit: cover; /* garante que a imagem preencha sem distorcer */
+            display: block;
+            margin: 0;
+            padding: 0;
+            background-color: #FFF;
+        }
+
+        /* Faixa verde */
+        .secao2 .faixa-verde {
+            width: 100%;
+            background-color: #fff;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        .secao2 .faixa-verde .titulo-secao {
+            font-size: 25px;
+            font-family: 'Roboto', sans-serif;
+            color: #015A42; /* Cor verde */
+            width: 90%;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+        }
+        .secao2 .titulo-verde {
+            font-size: 20px;
+            font-family: 'Roboto', sans-serif;
+            color: #3a95a6; /* Cor verde */
+            width: 90%;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+        }
+        /* Parágrafo padrão */
+        .secao2 p {
+            font-size: 19px;
+            font-family: 'Roboto', sans-serif;
+            text-align: justify;
+            line-height: 1.6;
+            color: #333;
+            margin: 10px auto;
+            width: 90%;
+            max-width: 800px;
+                 
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .secao2 .faixa-verde .titulo-secao {
+                font-size: 30px;
+            }
+
+            .secao2 p {
+                font-size: 1rem;
+            }
+            .secao2 .imagem-topo {
+                max-height: 180px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .secao2 .faixa-verde .titulo-secao {
+                font-size: 24px;
+            }
+
+            .secao2 p {
+                font-size: 0.95rem;
+            }
+        }
+        /* === Bloco de Figura (sem slider) === */
+        .bloco-figura {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            border: 2px solid #9F43BE;
+            background-color: #fff;
+            border-radius: 10px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+                /* Apenas para o bloco da Figura 20 */
+        .bloco-figura.figura-20 {
+            border: 2px solid #015A42;
+        }
+        /* Título */
+        .bloco-figura .titulo-figura {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: normal; /* remove o negrito */
+            font-style: normal;  /* caso também queira evitar itálico */
+        }
+        .bloco-figura .figura::after {
+            content: " "; /* espaço */
+            white-space: pre; /* garante que o espaço seja preservado */
+        }
+        .bloco-figura .titulo-figura .figura {
+            color: #015A42; /* verde padrão */
+        }
+
+        /* Imagem centralizada */
+        .bloco-figura .figura-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .bloco-figura .figura-container img {
+            max-width: 90%;
+            height: auto;
+        }
+
+        /* Fonte */
+        .bloco-figura .fonte-imagem {
+            font-size: 12px;
+            color: #555;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Descrição */
+        .bloco-figura .descricao-figura {
+            font-size: 14px;
+            color: #333;
+            text-align: justify;
+            line-height: 1.5;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .bloco-figura {
+                padding: 15px;
+            }
+            .bloco-figura .titulo-figura {
+                font-size: 18px;
+            }
+            .bloco-figura .descricao-figura {
+                font-size: 13px;
+            }
+        }
+        /* === Bloco Horizontal === */
+        .bloco-figura-horizontal {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            border: 2px solid #9F43BE;
+            background-color: #fff;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Título */
+        .bloco-figura-horizontal .titulo-figura {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: left;
+            font-weight: normal; /* remove o negrito */
+            font-style: normal;  /* caso também queira evitar itálico */
+        }
+        .bloco-figura-horizontal .figura::after {
+            content: " "; /* espaço */
+            white-space: pre; /* garante que o espaço seja preservado */
+        }
+        .bloco-figura-horizontal .titulo-figura .figura {
+            color: #015A42; /* verde padrão */
+        }
+
+        /* Layout horizontal */
+        .conteudo-horizontal {
+            display: flex;
+            align-items: center; /* centraliza verticalmente imagem e texto */
+            justify-content: center;
+            flex-wrap: wrap; /* quebra em telas menores */
+        }
+
+        /* Imagem */
+        .lado-imagem {
+            flex: 1 1 41%;
+            text-align: center !important;
+        }
+
+        .lado-imagem img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 8px;
+        }
+
+        /* Fonte abaixo da imagem */
+        .lado-imagem .fonte-imagem {
+            font-size: 10px !important;
+            color: #555;
+            text-align: justify !important;
+            margin-left: 5px;
+        }
+
+        /* Texto */
+        .lado-texto {
+            flex: 1 1 55%;
+        }
+
+        .lado-texto .paragrafo-figura {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: justify;
+            line-height: 1.5;
+        }
+
+        .lado-texto .descricao-figura {
+            font-size: 14px;
+            color: #333;
+            text-align: justify;
+            line-height: 1.5;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .conteudo-horizontal {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .lado-imagem, .lado-texto {
+                flex: 1 1 100%;
+                text-align: center;
+            }
+
+            .lado-imagem .fonte-imagem {
+                text-align: center;
+                margin-left: 0;
+            }
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            cursor: grab;
+            overflow: hidden;
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* garante que se ajuste à tela inicialmente */
+            transition: transform 0.2s ease;
+            transform-origin: center center;
+        }
+        .lightbox-hint {
+            position: absolute;
+            bottom: 20px;
+            color: #fff;
+            font-size: 14px;
+            opacity: 0.8;
+            font-family: sans-serif;
+            text-align: center;
+            animation: fadeOut 4s forwards; /* some sozinho */
+        }
+        .zoomable {
+            cursor: zoom-in; /* ícone de lupa ao passar o mouse */
+            transition: transform 0.2s ease;
+        }
+
+        .zoomable:hover {
+            transform: scale(1.02); /* leve efeito de destaque no hover */
+        }
+        @keyframes fadeOut {
+            0% { opacity: 0.8; }
+            80% { opacity: 0.8; }
+            100% { opacity: 0; }
+        }
+                /* Animação suave */
+                @keyframes zoomIn {
+                    from { transform: scale(0.7); opacity: 0; }
+                    to { transform: scale(1); opacity: 1; }
+                }
+
+         .quadro-violeta {
+            width: 90%;
+            max-width: 650px;
+            margin: 10px auto;
+            border: 2px solid #9F43BE;
+            background-color: #fff;
+            border-radius: 6px;
+            padding: 20px;
+            font-family: 'Roboto', sans-serif;
+            text-align: left;
+            box-sizing: border-box;
+        }
+
+        /* Container principal - quadrado ao lado do texto */
+        .container-quadrado-texto {
+            display: flex;
+            align-items: center; /* alinha ao topo */
+            gap: 20px; /* espaço entre quadrado e texto */
+            flex-wrap: wrap; /* permite quebrar linha em mobile */
+        }
+
+        /* Coluna do quadrado */
+        .coluna-quadrado {
+            flex-shrink: 0; /* impede que o quadrado diminua */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* Coluna dos textos - parágrafos empilhados */
+        .coluna-texto {
+            flex: 1; /* ocupa o espaço restante */
+            display: flex;
+            flex-direction: column; /* parágrafos em coluna */
+        }
+
+        /* Estilo para os parágrafos */
+        .paragrafo-matematica {
+            font-size: 17px !important;
+            margin: 0; /* remove margens padrão */
+            text-align: left;
+        }
+                /* Cria duas colunas invisíveis lado a lado */
+        .colunas-invisiveis {
+            display: flex;
+            justify-content: center;        /* centraliza o conteúdo */
+            align-items: center;            /* alinha verticalmente o quadrado e o texto */
+            gap: 10px;                      /* espaço fixo e uniforme entre as colunas */
+            flex-wrap: wrap;                /* empilha em telas pequenas */
+        }
+
+        .coluna {
+            flex: 0 1 280px;                /* largura base fixa e proporcional */
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            text-align: center;
+        }
+
+        .quadro-vertical {
+            width: 90%;
+            max-width: 800px;           /* largura aumentada */
+            margin: 40px auto;
+            border: 2px solid #9F43BE;  /* borda violeta do quadro */
+            border-radius: 6px;
+            background-color: #FFF;
+            padding: 0;                 /* sem espaçamento interno */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;     /* empilha os retângulos verticalmente */
+        }
+
+        .quadro-vertical .retangulo {
+            background-color: #f9f9f9;  /* fundo neutro */
+            padding: 15px;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            box-sizing: border-box;
+            border-bottom: 2px solid #9F43BE; /* borda interna separadora */
+        }
+
+        /* Remove a borda do último retângulo para evitar duplicação */
+        .quadro-vertical .retangulo:last-child {
+            border-bottom: none;
+        }
+
+          /* Quadrado dividido em 4 quadrantes */
+        .quadrado {
+            width: 100px;
+            height: 100px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            border: 2px solid #000;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        /* Cada quadrante */
+        .quadrante {
+            border: 1px solid #000;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Quadrante azul ciano */
+        .azul {
+            background-color: #00BCD4; /* ciano vibrante */
+        }
+
+                /* Responsividade */
+        @media (max-width: 600px) {
+            .container-quadrado-texto {
+                flex-direction: column; /* empilha quadrado e texto */
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .coluna-texto {
+                width: 100%;
+            }
+            
+            .paragrafo-matematica {
+                text-align: center; /* centraliza texto em mobile */
+            }
+        }
+        /* Acordeon styles */
+        .acordeon-container {
+            margin-top: 20px;
+            width: 90%; /* Ajuste de largura */
+            max-width: 800px; /* Limite máximo */
+        }
+
+        .acordeon {
+            border-radius: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .acordeon-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3a95a6;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            font-size: 17px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .acordeon-headerb {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #134969;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            font-size: 17px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .acordeon-headerc {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #9F43BE;
+            color: #FFF;
+            cursor: pointer;
+            padding: 15px;
+            font-size: 17px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .acordeon-headerd {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #134969; /* exemplo: laranja suave */
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            font-size: 17px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .acordeon-content {
+            display: none;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            padding-top: 0; /* Remove padding para que o header toque no conteúdo */
+            border: 2px solid #3a95a6;
+            border-radius: 0 0 10px 10px; /* Apenas canto inferior arredondado */
+        }
+
+        .acordeon-contentb {
+            display: none;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            padding-top: 0; /* Remove padding para que o header toque no conteúdo */
+            border: 2px solid #134969;
+            border-radius: 0 0 10px 10px; /* Apenas canto inferior arredondado */
+        }
+
+        .acordeon-contentc {
+            display: none;
+            border-radius: 5px;
+            background-color: #FFF;
+            padding-top: 0; /* Remove padding para que o header toque no conteúdo */
+            border: 2px solid #9F43BE;
+            border-radius: 0 0 10px 10px; /* Apenas canto inferior arredondado */
+        }
+
+        .acordeon-contentd {
+            display: none;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            padding-top: 0; 
+            border: 2px solid #134969; /* mesma cor da header para consistência */
+            border-radius: 0 0 10px 10px; 
+        }
+
+        .acordeon-content p {
+            margin: 20px auto;
+            font-size: 16px;
+        }
+        .acordeon-contentb p {
+            margin: 20px auto;
+            font-size: 16px;
+        }
+        .acordeon-contentc p {
+            margin: 20px auto;
+            font-size: 16px;
+        }
+        .acordeon-contentc h4 {
+            text-align: center;
+
+        }
+        .acordeon-contentd p {
+            margin: 20px auto;
+            font-size: 16px;
+        }
+        .tituloacordeonverde{
+            color: #015A42;
+        }
+            /* Estilo do ícone da seta */
+        .acordeon-icon {
+            font-size: 40px;
+            transition: transform 0.3s ease; /* Para rotação suave */
+        }
+            
+            /* Rotação da seta para cima */
+        .acordeon-header.active .acordeon-icon {
+            transform: rotate(180deg); /* Gira a seta para cima */
+        }
+        /* Rotação da seta para cima */
+        .acordeon-headerb.active .acordeon-icon {
+            transform: rotate(180deg); /* Gira a seta para cima */
+        }
+        /* Rotação da seta para cima */
+        .acordeon-headerc.active .acordeon-icon {
+            transform: rotate(180deg); /* Gira a seta para cima */
+        }
+                /* Ícone giratório */
+        .acordeon-headerd.active .acordeon-icon {
+            transform: rotate(180deg);
+        }
+        /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            .acordeon-header {
+                font-size: 20px; /* Reduzir tamanho do texto */
+                padding: 12px; /* Ajustar espaçamento */
+            }
+
+            .acordeon-icon {
+                font-size: 30px; /* Reduzir tamanho do ícone */
+            }
+
+            .acordeon-content {
+                font-size: 14px; /* Reduzir tamanho do texto do conteúdo */
+                padding: 10px; /* Reduzir espaçamento interno */
+            }
+
+            .acordeon-content p {
+                margin: 15px; /* Ajustar margem para menor espaçamento */
+            }
+            .acordeon-headerb {
+                font-size: 20px; /* Reduzir tamanho do texto */
+                padding: 12px; /* Ajustar espaçamento */
+            }
+
+            .acordeon-icon {
+                font-size: 30px; /* Reduzir tamanho do ícone */
+            }
+
+            .acordeon-contentb {
+                font-size: 14px; /* Reduzir tamanho do texto do conteúdo */
+                padding: 10px; /* Reduzir espaçamento interno */
+            }
+
+            .acordeon-contentb p {
+                margin: 15px; /* Ajustar margem para menor espaçamento */
+            }
+
+            .acordeon-headerc {
+                font-size: 20px; /* Reduzir tamanho do texto */
+                padding: 12px; /* Ajustar espaçamento */
+            }
+
+            .acordeon-icon {
+                font-size: 30px; /* Reduzir tamanho do ícone */
+            }
+
+            .acordeon-contentc {
+                font-size: 14px; /* Reduzir tamanho do texto do conteúdo */
+                padding: 10px; /* Reduzir espaçamento interno */
+            }
+
+            .acordeon-contentc p {
+                margin: 15px; /* Ajustar margem para menor espaçamento */
+            }
+            .acordeon-headerd {
+                font-size: 20px;
+                padding: 12px;
+            }
+
+            .acordeon-contentd {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .acordeon-contentd p {
+                margin: 15px;
+            }
+        }
+        /* Responsividade para telas menores ainda (480px) */
+        @media (max-width: 480px) {
+            .acordeon-header {
+                font-size: 16px; /* Reduz ainda mais o tamanho do texto */
+                padding: 10px; /* Ajustar espaçamento */
+            }
+
+            .acordeon-icon {
+                font-size: 25px; /* Reduzir tamanho do ícone */
+            }
+
+            .acordeon-content {
+                font-size: 13px; /* Reduzir tamanho do texto do conteúdo */
+                padding: 8px; /* Reduzir espaçamento interno */
+            }
+
+            .acordeon-content p {
+                margin: 10px; /* Ajustar margem para menor espaçamento */
+                font-size: 19px;
+            }
+            .acordeon-headerb {
+                font-size: 16px; /* Reduz ainda mais o tamanho do texto */
+                padding: 10px; /* Ajustar espaçamento */
+            }
+
+            .acordeon-icon {
+                font-size: 25px; /* Reduzir tamanho do ícone */
+            }
+
+            .acordeon-contentb {
+                font-size: 13px; /* Reduzir tamanho do texto do conteúdo */
+                padding: 8px; /* Reduzir espaçamento interno */
+            }
+
+            .acordeon-contentb p {
+                margin: 10px; /* Ajustar margem para menor espaçamento */
+                font-size: 19px;
+            }
+
+            .acordeon-headerc {
+                font-size: 14px; /* Reduz ainda mais o tamanho do texto */
+                padding: 10px; /* Ajustar espaçamento */
+            }
+
+            .acordeon-icon {
+                font-size: 25px; /* Reduzir tamanho do ícone */
+            }
+
+            .acordeon-contentc {
+                font-size: 13px; /* Reduzir tamanho do texto do conteúdo */
+                padding: 8px; /* Reduzir espaçamento interno */
+            }
+
+            .acordeon-contentc p {
+                margin: 10px; /* Ajustar margem para menor espaçamento */
+                font-size: 19px;
+            }
+            .acordeon-headerd {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            .acordeon-contentd {
+                font-size: 13px;
+                padding: 8px;
+            }
+
+            .acordeon-contentd p {
+                margin: 10px;
+                font-size: 19px;
+            }
+        }
+        /* Acordeon styles FIM */
+            
+            /* SLIDER TEXTO CONTAINER */
+        .slider-texto-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            border: 2px solid #3a95a6;
+            padding: 20px 30px;
+            box-sizing: border-box;
+            overflow-x: auto; /* permite rolar horizontalmente se necessário */
+            overflow-y: visible; /* evita corte vertical */
+            -webkit-overflow-scrolling: touch; /* rolagem suave em dispositivos iOS */
+            background-color: #FFF;
+            border-radius: 8px;
+        }
+                /* Garante que o conteúdo dentro do retângulo não seja cortado */
+        .slide-texto .retangulo {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            box-sizing: border-box;
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: visible;
+            margin: 0 auto;
+        }
+
+        /* Força o MathJax a se ajustar bem dentro do container */
+        mjx-container[jax="CHTML"] {
+            overflow-x: auto !important;
+            overflow-y: visible !important;
+            max-width: 100% !important;
+            text-align: center;
+        }
+        .slider-texto-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .slide-texto {
+            display: none;
+            flex-shrink: 0;
+            width: 100%;
+            text-align: center;
+            word-break: keep-all;
+            white-space: normal;
+            
+        }
+
+        .slide-texto.ativo {
+            display: block;
+        }
+
+        .titulo-texto {
+            color: #b9e5a9;
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-family: 'Roboto', sans-serif;
+            width: 100%;
+        }
+
+        .conteudo-texto {
+            font-size: 16px !important;
+            color: #333 !important;
+            font-family: 'Roboto', sans-serif !important;
+            width: 100%;
+            margin: 0 auto;
+            word-break: normal;
+            white-space: normal;
+            text-align: left !important;
+        }
+        .titulo-texto,
+        .conteudo-texto {
+            word-break: break-word;
+            white-space: normal;
+        }
+        .seta-texto {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: transparent;
+            border: none;
+            font-size: 30px;
+            color: #3a95a6;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 10;
+        }
+
+        .seta-texto.esquerda {
+            left: 0;
+        }
+
+        .seta-texto.direita {
+            right: 0;
+        }
+    
+            /* ======== RESPONSIVIDADE ======== */
+    @media (max-width: 768px) {
+        .slider-texto-container {
+            width: 95%;
+            padding: 15px;
+        }
+
+        .slide-texto .retangulo {
+            padding: 12px;
+            font-size: 15px;
+        }
+
+        .seta-texto {
+            font-size: 24px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .slide-texto .retangulo {
+            padding: 10px;
+            font-size: 14px;
+        }
+    }
+    @media (max-width: 768px) {
+        .titulo-texto {
+            font-size: 20px;
+        }
+
+        .conteudo-texto {
+            font-size: 18px;
+        }
+
+        .seta-texto {
+            font-size: 24px;
+        }
+    }
+        .slider-texto-indicadores {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .dot-texto {
+            height: 12px;
+            width: 12px;
+            margin: 0 6px;
+            background-color: #ccc;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .dot-texto.ativo {
+            background-color: #3a95a6;
+        }
+        /* ------------------- */
+        /* TEMAS DE COR        */
+        /* ------------------- */
+
+        /* Tema verde */
+        .tema-verde {
+            border-color: #9F43BE;
+        }
+        .tema-verdeborda {
+            border-color: #015A42 !important;
+        }
+        .tema-verde .seta-texto {
+            color: #9F43BE;
+        }
+        .tema-verde .dot-texto.ativo {
+            background-color: #9F43BE;
+        }
+
+        /* Tema roxo */
+        .tema-roxo {
+            border-color: #134969;
+        }
+        .tema-roxo .seta-texto {
+            color: #134969;
+        }
+        .tema-roxo .dot-texto.ativo {
+            background-color: #134969;
+        }
+
+        /* Tema roxo */
+        .tema-green {
+            border-color: #015A42;
+        }
+        .tema-green .seta-texto {
+            color: #015A42;
+        }
+        .tema-green .dot-texto.ativo {
+            background-color: #015A42;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .seta-texto { font-size: 24px; }
+            .conteudo-texto { font-size: 18px; }
+        }
+        /* SLIDER TEXTO CONTAINER FIM */
+
+        /* TESTES */
+
+        .quadro-problema {
+            max-width: 800px;
+            width: 95%; /* adapta o quadro à tela menor */
+            margin: 20px auto;
+            border: 2px solid #015A42;
+            border-radius: 10px;
+            overflow: hidden;
+            font-family: 'Roboto', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .quadro-problema .topo {
+            background-color: #ffffff;
+            padding: 10px;
+            
+        }
+
+        .quadro-problema .resolucao {
+            background-color: #E2F4EB;
+            padding: 10px;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .quadro-problema h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .quadro-problema p {
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .quadro-problema code {
+            background-color: #d9f0e1;
+            padding: 2px 4px;
+            border-radius: 20px;
+            font-family: monospace;
+        }
+        .figura-container-reduzida {
+            text-align: center; /* centraliza a imagem */
+            margin: 15px 0; /* espaço acima e abaixo da imagem */
+        }
+
+        .figura-container-reduzida img {
+            max-width: 50%; /* imagem ocupa a largura total no mobile */
+            height: auto; /* mantém proporção */
+            border-radius: 4px; /* opcional, suaviza bordas */
+        }
+        
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            .quadro-problema {
+                width: 90%;
+                font-size: 15px;
+            }
+
+            .quadro-problema p {
+                font-size: 15px;
+                line-height: 1.5;
+            }
+
+            .figura-container-reduzida img {
+                max-width: 100%; /* imagem se ajusta completamente */
+            }
+
+            .quadro-problema .resolucao {
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .quadro-problema {
+                width: 95%;
+                border-width: 1.5px;
+            }
+
+            .quadro-problema p {
+                font-size: 14px;
+            }
+
+            .figura-container-reduzida img {
+                max-width: 100%;
+            }
+        }
+        
+        .play-icon {
+            display: flex; /* Flexbox para centralizar o conteúdo */
+            justify-content: center;
+            align-items: center;
+            background-color: #015A42; /* Fundo verde */
+            color: #FFF; /* Ícone branco */
+            width: 90px; /* Largura do botão */
+            height: 55px; /* Altura do botão */
+            border-radius: 13px;
+            font-size: 40px; /* Tamanho do ícone */
+            cursor: pointer; /* Cursor de clique */
+            transition: transform 0.3s ease; /* Efeito de transição */
+        }
+
+        .play-icon:hover {
+            transform: scale(1.1); /* Aumenta levemente no hover */
+        }
+                /* Responsividade - Ajuste para telas menores */
+        @media (max-width: 768px) {
+            .play-icon {
+                width: 60px; /* Diminui a largura */
+                height: 40px; /* Diminui a altura */
+                font-size: 25px; /* Diminui o tamanho do ícone */
+            }
+        }
+        /* Modal - Oculto por padrão */
+        .video-modal {
+            display: none; /* Inicialmente o modal está oculto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro transparente */
+            z-index: 1000; /* Garantir que o modal fique acima de outros conteúdos */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Conteúdo do modal (onde ficará o vídeo) */
+        .video-content {
+            position: relative;
+            background-color: #015A42;
+            border-radius: 10px;
+            padding: 20px;
+        }
+         
+        /* Responsividade - Ajustes para dispositivos móveis */
+        @media (max-width: 768px) {
+            .video-content {
+                max-width: 100%; /* Maximize a largura do modal no mobile */
+                padding: 10px;
+            }
+
+            .video-content iframe {
+                width: 100%; /* O iframe ocupará toda a largura disponível */
+                height: 56.25vw; /* Isso mantém a proporção de 16:9 */
+                max-height: 80vh; /* Evita que o vídeo ultrapasse a tela */
+                border-radius: 10px;
+            }
+        }
+
+        /* Botão de fechar */
+        .close-btn {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 40px;
+            color: #FFF;
+            cursor: pointer;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+        .close-btn:hover {
+            transform: scale(1.2); /* Aumenta levemente no hover */
+            color: #FF0000; /* Muda a cor para vermelho no hover */
+        }
+                /* Container */
+        .video-play-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        /* Botão circular */
+        .video-play-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(145deg, #017A5A, #015A42); /* Gradiente verde */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            color: #FFF;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            font-size: 55px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        /* Efeito pulsante */
+        .video-play-btn::after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid rgba(1,90,66,0.6);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            70% { transform: scale(1.3); opacity: 0; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+        .video-play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Texto abaixo */
+        .video-play-text {
+            margin-top: 10px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            color: #015A42;
+            font-weight: 600;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .video-play-btn {
+                width: 70px;
+                height: 70px;
+                font-size: 35px;
+            }
+
+            .video-play-btn::after {
+                width: 85px;
+                height: 85px;
+            }
+
+            .video-play-text {
+                font-size: 14px;
+            }
+        }
+
+        .video-row {
+            display: flex;
+            justify-content: center; /* centraliza os vídeos */
+            gap: 50px; /* espaço entre os players */
+            flex-wrap: wrap; /* quebra para baixo em telas pequenas */
+            margin: 30px 0;
+        }
+
+        .video-row .video-play-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+         .download-section {
+                padding: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 15px;
+            }
+            .download-btn {
+                background-color: #9F43BE;
+                color: white;
+                text-decoration: none;
+                font-size: 16px;
+                padding: 10px 15px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                transition: all 0.3s ease;
+                font-weight: bold;
+                margin-top: 80px;
+            }
+
+            .download-btn i {
+                font-size: 18px;
+            }
+
+            .download-btn:hover {
+                background-color: #7D3598;
+            }
+                        /* ===== Seções de Conclusão e Referências ===== */
+        .conclusao, .referencias {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .conclusao {
+            background-color: #E2F4EB; /* fundo suave */
+        }
+
+        .referencias {
+            background-color: #FFF;
+            border-top: 3px solid #015A42;
+            border-bottom: 3px solid #015A42;
+        }
+
+        /* Títulos */
+        .titulo-conclusao, .titulo-referencias {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 50px;
+            font-weight: lighter;
+            color: #015A42;
+            margin: 10px auto 20px auto;
+            text-align: left; /* garante centralização em desktop */
+        }
+
+        /* Caixas de texto */
+        .conclusao .caixa-texto, 
+        .referencias .caixa-texto {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Parágrafos */
+        .conclusao .caixa-texto p,
+        .referencias .caixa-texto p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 19px;
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        /* Cores de texto diferentes */
+        .conclusao .caixa-texto p {
+            color: #333;
+        }
+        .referencias .caixa-texto p {
+            color: #000;
+        }
+
+        /* Links em referências */
+        .referencias .caixa-texto a {
+            word-break: break-all;
+            color: #015A42;
+            text-decoration: underline;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .titulo-conclusao, .titulo-referencias {
+                font-size: 2rem;
+            }
+            .conclusao .caixa-texto p,
+            .referencias .caixa-texto p {
+                font-size: 1rem;
+                line-height: 1.4;
+            }
+            .conclusao .caixa-texto, 
+            .referencias .caixa-texto {
+                max-width: 95%;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .titulo-conclusao, .titulo-referencias {
+                font-size: 1.8rem;
+            }
+            .conclusao .caixa-texto, 
+            .referencias .caixa-texto {
+                max-width: 100%;
+                padding: 10px;
+            }
+        }
+
+        /* Estilização do rodapé */
+        .footer {
+            border-top: 3px solid #015A42; /* Borda superior */
+            background-color: #FFFFFF; /* Fundo branco */
+            text-align: center; /* Centralizar texto */
+            padding: 15px 0; /* Espaçamento interno */
+            box-sizing: border-box; /* Inclui padding nas dimensões */
+        }
+
+        .footer p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: #015A42; /* Cor do texto */
+            margin: 0; /* Remove espaçamento externo */
+        }
+        /* Texto descritivo */
+        .footer .fonte-menor {
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
+            color: #555; /* Cor neutra */
+            line-height: 1.5; /* Espaçamento entre linhas */
+            display: block; /* Garante quebra para nova linha */
+            margin-top: 10px; /* Espaço entre o texto e o divisor */
+        }
+                /* Divisor */
+        .footer-divider {
+            border: none; /* Remove borda padrão */
+            height: 1px; /* Altura da linha */
+            background-color: #015A42; /* Cor da linha */
+            margin: 10px auto; /* Espaçamento vertical */
+            width: 80%; /* Define a largura do divisor */
+            opacity: 0.5; /* Reduz opacidade para suavizar */
+        }
+                /* Ajustes do rodapé para mobile */
+        @media (max-width: 480px) {
+            .footer p {
+                font-size: 15px; /* Ajusta o tamanho da fonte */
+            }
+            .footer .fonte-menor {
+                font-size: 12px; /* Reduz tamanho da fonte */
+                line-height: 1.4; /* Ajusta o espaçamento */
+            }
+            .footer-divider {
+                width: 100%; /* Ajusta largura do divisor no mobile */
+            }
+        }
+        .logo-final {
+            background-color: #b9e5a92c;
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 3px solid #015A42;
+        }
+
+        .logo-final img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
+        /* Nova seção com os títulos ocupando a tela inteira */
+        .ficha-titulos {
+            background-color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .ficha-titulos h2,
+        .ficha-titulos h3 {
+            font-family: 'Bebas Neue', cursive;
+            font-weight: lighter;
+            font-size: 40px;
+            color: #0058B4;
+            margin: 10px 0;
+        }
+
+        /* Mantemos a ficha técnica como estava */
+        .ficha-tecnica {
+            background-color: #FFF;
+            padding: 60px 20px;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+        .ficha-tecnica p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 15px auto;
+            max-width: 700px;
+        }
+
+        .ficha-tecnica strong {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .paragraforeduzido {
+            font-size: 14px;
+        }
+
+        /* Container dos vídeos */
+        .container-videos {
+            border: 2px solid #015A42;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="https://drive.google.com/thumbnail?id=1iZTd5_tOqqVTFtrgbqdKazN1J1Yk-PuE" alt="Logo">
+        </div>
+        <div class="menu-toggle">
+            <i class="bx bx-menu"></i>
+            <i class="bx bx-x" style="display: none;"></i> <!-- Ícone de fechar menu -->
+        </div>
+        <ul>
+            <li><a href="#introducao">Introdução</a></li>
+            <li><a href="#secao1">Tópico 1</a></li>
+            <li><a href="#secao2">Tópico 2</a></li>
+            <li><a href="#download">Download</a></li>
+            <li><a href="#conclusao">Conclusão</a></li>
+            <li><a href="#referencias">Refs Bibliográficas</a></li>
+        </ul>
+    </div>
+    
+    
+    <!-- ESPAÇAMENTO -->
+    <section id="titulo" class="titulo-intro">
+        <h1 class="titulo-programa"></h1>
+    </section>
+    <!-- ESPAÇAMENTO -->
+    <section id="titulo" class="titulo-intro">
+        <h1 class="titulo-programa"></h1>
+    </section>
+    <!-- ESPAÇAMENTO -->
+    
+    <!-- Capa do Livro -->
+    <section id="capa-livro" class="capa-livro">
+        <div class="borda superior"></div>
+        <div class="conteudo-capa">
+            <h1 class="titulo-programa">PROGRAMA DE ATUALIZAÇÃO em fundamentos da</h1>
+            <h1 class="titulo-materia">Matemática - NÍVEL 1</h1>
+            <h2 class="subtitulo-professor">Profª MEª Elisabeth Conceição Sena Gonçalves</h2>
+            <h2 class="subtitulo-professor">Profª MEª FlÁvia Cristina Franco de Lima ROSA</h2>
+        </div>
+        <div class="borda inferior"></div>
+    </section>
+    
+    <!-- ESPAÇAMENTO -->
+    <section id="titulo" class="titulo-intro">
+        <h1 class="titulo-programa"></h1>
+    </section>
+    <!-- ESPAÇAMENTO -->
+    <section id="titulo" class="titulo-intro">
+        <h1 class="titulo-programa"></h1>
+    </section>
+    <!-- ESPAÇAMENTO -->
+    
+    
+    <!-- Seção Introdução -->
+    <section id="introducao" class="introducao">
+        <!-- Barra Superior -->
+        <div class="barra-superior">
+            <h1 class="titulo-barra">UNIDADE 2| OPERAÇÕES COM FRAÇÕES</h1>
+        </div>
+    
+        <!-- Conteúdo -->
+        <div class="caixa-texto">
+            <div class="conteudo-centralizado">
+                <h1 class="titulo-introducao">INTRODUÇÃO</h1>
+                <p>
+                    Você já se perguntou por que aprender frações é tão importante, mesmo quando elas parecem distantes
+                    do nosso dia a dia? A verdade é que, sem perceber, usamos frações o tempo todo: ao dividir um bolo entre
+                    amigos, calcular descontos ou até mesmo planejar o tempo entre tarefas. Entender como essas partes
+                    se relacionam com um todo nos ajuda a lidar melhor com situações concretas, sejam elas na escola, no
+                    trabalho ou em casa. Neste material, vamos conversar sobre as principais operações com frações e como
+                    elas funcionam na prática, sempre de forma clara, com exemplos que mostram o raciocínio passo a passo.
+                </p>
+                <p>
+                    Ao longo desta unidade, vamos retomar os tipos de fração — próprias, impróprias, mistas e aparentes — e
+                    lembrar como identificá-las. Em seguida, vamos revisar cada operação: adição, subtração, multiplicação
+                    e divisão, com atenção especial aos casos em que os denominadores são diferentes. Não se preocupe
+                    se esses nomes parecerem complicados à primeira vista. Com atenção e prática, tudo começa a fazer
+                    sentido. A proposta aqui não é acelerar o conteúdo, mas acompanhar seu raciocínio, respeitando o ritmo
+                    necessário para que cada etapa seja compreendida de verdade.
+                </p>
+                <p>
+                    Além disso, você encontrará situações-problema que ajudam a entender como aplicar esses conceitos
+                    fora da teoria. Saber usar frações para resolver questões do cotidiano é uma habilidade que faz diferença.
+                    Por isso, fique atento às explicações e exemplos, pois eles foram construídos justamente para mostrar
+                    como o que você aprende pode ser colocado em uso real. Cada conta resolvida, cada exemplo entendido,
+                    reforça sua autonomia e fortalece sua confiança ao lidar com os números.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="secao1" id="secao1">
+        <div class="faixa-verde">
+            <h1 class="titulo-secao">
+                1. OPERAÇÕES COM FRAÇÕES
+            </h1>
+        </div>
+        <p>
+            Vamos retomar a definição de frações, suas operações e a resolução de problemas aplicados. E, para isso,
+            vamos retomar também as regras de adição, multiplicação, subtração e divisão com números fracionários.
+        </p>
+        <p>
+            <strong>Fração</strong> é uma maneira de representar uma quantidade a partir de um valor, que é dividido por um
+            determinado número de partes iguais.
+        </p>
+
+        <br>
+        
+        <!-- Quadro violeta -->
+        <section class="quadro-violeta">
+            <div class="container-quadrado-texto">
+                <!-- Coluna do quadrado -->
+                <div class="coluna-quadrado">
+                    <div class="quadrado">
+                        <div class="quadrante azul"></div>
+                        <div class="quadrante"></div>
+                        <div class="quadrante"></div>
+                        <div class="quadrante"></div>
+                    </div>
+                </div>
+        
+                <!-- Coluna dos parágrafos -->
+                <div class="coluna-texto">
+                    <p class="paragrafo-matematica">
+                        <strong>Por definição</strong> a fração \( \dfrac{a}{b} \), com \( b \neq 0 \), é a representação
+                        genérica do valor \({a}\) que é dividido por \({b}\) partes iguais.
+                    </p>
+                    <p class="paragrafo-matematica">
+                        Observe que a figura foi dividida em 4 partes iguais, então
+                        a parte azul corresponde a \( \dfrac{1}{4} \).
+                    </p>
+                </div>
+            </div>
+        </section>
+        <br>
+        <br>
+        <p>
+            Em uma fração \( \dfrac{a}{b} \) , o termo \({a}\) é chamado de numerador, e \({b}\), de denominador.
+        </p>
+        <br>
+        
+        <!-- Bloco de Figura Estática -->
+        <section class="bloco-figura tema-verde">
+        
+            <!-- Título -->
+            <h3 class="titulo-figura"><span class="figura"><strong>Figura 1</strong>.</span> Elementos de uma fração</h3>
+            <br>
+            <!-- Imagem -->
+            <div class="figura-container">
+                <img class="zoomable" src="https://res.cloudinary.com/di4ria1pf/image/upload/v1760079358/Figura2_mnoxlc.png"
+                    alt="Diagrama da composição dos números reais">
+            </div>
+        
+            <!-- Fonte -->
+            <p class="fonte-imagem"><strong><i>Fonte</strong>: Elaborada pelas autoras.</i></p>
+        
+            <!-- Descrição -->
+            <p class="descricao-figura">
+                <strong>Descrição da imagem:</strong>
+                A imagem apresenta a estrutura básica de uma fração matemática, composta
+                por duas partes principais: o numerador, representado pela letra “a”, localizado na parte superior, e
+                o denominador, representado pela letra “b”, localizado na parte inferior. Esses dois elementos são
+                separados por uma linha horizontal, indicando que a fração expressa a razão entre dois números.
+            </p>
+        </section>
+        <br>
+        <br>
+        <!-- Acordeons -->
+        <div class="acordeon-container">
+            <!-- Primeiro acordeon -->
+            <div class="acordeon">
+                <div class="acordeon-headerc">
+                    FRAÇÕES PRÓPRIAS
+        
+                    <i class="bx bx-chevron-down acordeon-icon"></i>
+                </div>
+                <div class="acordeon-contentc">
+                    <p>
+                        São os números usados para contagem. Utilizamos os naturais, por exemplo, para contar
+                        pessoas, objetos ou dias.
+                    </p>
+                    <p>
+                        Exemplos:
+                    </p>
+                    <p style="text-align:center;">
+                        \( \dfrac{3}{10} \qquad \dfrac{1}{2} \qquad \dfrac{2}{3} \)
+                    </p>
+                </div>
+            </div>
+        
+            <!-- Segundo acordeon -->
+            <div class="acordeon">
+                <div class="acordeon-headerc">
+                    FRAÇÕES IMPRÓPRIAS
+                    <i class="bx bx-chevron-down acordeon-icon"></i>
+                </div>
+                <div class="acordeon-contentc">
+                    <p>
+                        São todas as frações cujo numerador apresenta maior valor absoluto que o do seu
+                        denominador.
+                    </p>
+                    <p>
+                        Exemplos:
+                    </p>
+                    <p style="text-align:center;">
+                        \( \dfrac{7}{4} \qquad \dfrac{5}{2} \qquad \dfrac{8}{3} \)
+                    </p>
+                </div>
+            </div>
+        
+            <!-- terceiro acordeon -->
+            <div class="acordeon">
+                <div class="acordeon-headerc">
+                    FRAÇÕES MISTAS
+                    <i class="bx bx-chevron-down acordeon-icon"></i>
+                </div>
+                <div class="acordeon-contentc">
+                    <p>
+                        São aquelas que apresentam uma parte inteira e uma parte fracionária.
+                    </p>
+                    <p>
+                        Exemplos:
+                    </p>
+                    <p style="text-align:center;">
+                        \( \quad 2\dfrac{3}{4}, \quad 1 \dfrac{1}{2}, \quad 5 \dfrac{1}{3} \)
+                    </p>
+                    <p>
+                        Observe que na fração \(\quad 2\dfrac{3}{4},\)
+                        “dois inteiros e três quartos”, \({2}\) é a parte inteira e \(\dfrac{3}{4}\)
+                        é a parte fracionária.
+                    </p>
+                    <p>
+                        A fração \(\quad 5\dfrac{1}{4}\) é equivalente à fração imprópria \(\dfrac{21}{4}\)
+                    </p>
+                    <p>
+                        <strong>
+                            Atenção:
+                        </strong>
+                    </p>
+                    <p>
+                        ► Para converter a fração mista \(\quad 5\dfrac{1}{4}\) na fração imprópria \(\dfrac{21}{4}\), fazemos a
+                        multiplicação
+                        do denominador “4” pela parte inteira “5” e somamos ao numerador “1”, mantendo sempre o denominador.
+                    </p>
+                    <!-- Imagem centralizada com classe zoomable -->
+                    <div class="imagem-fracoes-container">
+                        <img src="https://res.cloudinary.com/di4ria1pf/image/upload/v1760080729/fra%C3%A7%C3%B5es_it0uq8.png"
+                            alt="Representação visual de frações" class="imagem-fracoes zoomable">
+                    </div>
+                    <p>
+                        Exemplos:
+                    </p>
+                    <!-- Imagem centralizada com classe zoomable -->
+                    <div class="imagem-fracoes-container">
+                        <img src="https://res.cloudinary.com/di4ria1pf/image/upload/v1760081178/fra%C3%A7%C3%B5esmistas2_a5dapz.png"
+                            alt="Representação visual de frações" class="imagem-fracoes zoomable">
+                    </div>
+                    <p>
+                        ► Para converter a fração imprópria \(\dfrac{21}{4}\), na fração mista \(\quad 5\dfrac{1}{4}\), fazemos
+                        a divisão do
+                        numerador “21” pelo denominador “4”. Obtemos como quociente o “5”, que será a
+                        parte inteira, e como resto “1”, que será o numerador da parte fracionária, mantendo
+                        sempre o denominador.
+                    </p>
+        
+                    <p style="text-align:center; font-size: 20px;">
+                        \(\dfrac{21}{4}\) = \(\quad 5\dfrac{1}{4}\)
+                    </p>
+                    <p>
+                        Exemplos:
+                    </p>
+                    <p style="display: flex; justify-content: center; align-items: center; gap: 15px; font-size: 20px;">
+                        \(\dfrac{7}{4} = \quad 1\dfrac{3}{4}\) \(\) \(−\dfrac{10}{3} = \quad −3\dfrac{1}{3}\)
+                    </p>
+                </div>
+            </div>
+        
+            <!-- Segundo acordeon -->
+            <div class="acordeon">
+                <div class="acordeon-headerc">
+                    FRAÇÕES APARENTES
+                    <i class="bx bx-chevron-down acordeon-icon"></i>
+                </div>
+                <div class="acordeon-contentc">
+                    <p>
+                        São aquelas em que o numerador é divisível pelo denominador. As frações aparentes
+                        podem ser expressas por um número inteiro.
+                    </p>
+                    <p>
+                        Exemplos:
+                    </p>
+                    <p style="display: flex; justify-content: center; align-items: center; gap: 15px; font-size: 20px;">
+                        \(\dfrac{12}{4} = {3}\) \(\) \(−\dfrac{10}{2} = −{5}\)
+                    </p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="faixa-verde">
+            <h1 class="titulo-secao" style="font-size: 22px !important;">
+                5.1 ADIÇÃO E SUBTRAÇÃO
+            </h1>
+        </div>
+        <p>
+            Para somar ou subtrair frações com <strong>denominadores iguais</strong>, devemos operar (somar ou subtrair) os
+            numeradores e conservar os denominadores. Deslize pelas setas e confira os exemplos.
+        </p>
+        <br>
+        <section class="slider-texto-container tema-verde" data-slider-id="2">
+            <!-- conteúdo do slider 2 -->
+            <div class="slider-texto-wrapper">
+                <div class="slide-texto ativo">
+                    <div class="retangulo">
+                        a) \( \dfrac{3}{5} \)+\( \dfrac{1}{5} \) = \( \dfrac{3+1}{5}\) = \( \dfrac{4}{5} \)
+                    </div>
+                </div>
+                <div class="slide-texto">
+                    <div class="retangulo">
+                        a) \( \dfrac{7}{8} \) − \( \dfrac{3}{8} \) = \( \dfrac{7−3}{8}\) = \(
+                        \dfrac{4^{\color{red}{:4}}}{8^{\color{red}{:4}}} \) = \( \dfrac{1}{2} \)
+                    </div>
+                </div>
+                <div class="slide-texto">
+                    <div class="retangulo">
+                        a) \( \dfrac{3}{10} \)+\( \dfrac{4}{10} \) − \( \dfrac{6}{10}\) = \( \dfrac{1}{10} \)
+                    </div>
+                </div>
+            </div>
+        
+            <button class="seta-texto esquerda" onclick="mudarSlideTexto(this, -1)">&#10094;</button>
+            <button class="seta-texto direita" onclick="mudarSlideTexto(this, 1)">&#10095;</button>
+        
+            <div class="slider-texto-indicadores">
+            </div>
+        </section>
+        <br>
+        <p>
+            Já para somar ou subtrair frações com <strong>denominadores diferentes</strong>, devemos primeiro transformar em
+            frações equivalentes com denominadores comuns. Para isso, uma das formas é determinar o mínimo
+            múltiplo comum (mmc) e então realizar as operações indicadas. Use as setas para explorar os exemplos.
+        </p>
+        <br>
+        <section class="slider-texto-container tema-verde" data-slider-id="2">
+            <!-- conteúdo do slider 2 -->
+            <div class="slider-texto-wrapper">
+                <div class="slide-texto ativo">
+                    <div class="retangulo">
+                        <strong>a)</strong> \( \dfrac{3}{5} \)+\( \dfrac{4}{12} \)
+                    </div>
+                    <br><br>
+                    <div class="retangulo">
+                        <strong>1º) mmc (5,12) = 60</strong>
+                    </div>
+                    <br><br>
+                    <div class="retangulo">
+                        \[
+                        \begin{array}{r|l}
+                        5,\ 12 & 2 \\
+                        5,\ 6 & 2 \\
+                        5,\ 3 & 3 \\
+                        5,\ 1 & 5 \\ \hline
+                        1,\ 1 & 60
+                        \end{array}
+                        \]
+                    </div>
+                    <br><br>
+                    <div class="retangulo">
+                        <strong>2º)</strong> \( \dfrac{3}{5} \) + \( \dfrac{4}{12} \) = \( \dfrac{36+20}{60}\) = \(
+                        \dfrac{56^{\color{red}{:4}}}{60^{\color{red}{:4}}} \) = \( \dfrac{14}{15} \)
+                    </div>
+                </div>
+                <div class="slide-texto">
+                    <div class="retangulo">
+                        <strong>b)</strong> \( \dfrac{1}{4} \) + \( \dfrac{3}{5} \) − \( \dfrac{5}{8} \) =\(
+                        \dfrac{10+24−25}{40}\) = \( \dfrac{9}{40} \)
+                    </div>
+                    <br><br>
+                    <div class="retangulo">
+                        \[
+                        \begin{array}{r|l}
+                        4, \ 5, \ 8 & 2 \\
+                        2, \ 5,\ 4 & 2 \\
+                        1, \ 5,\ 2 & 2 \\
+                        1, \ 5,\ 1 & 5 \\ \hline
+                        1, \ 1,\ 1 & 40
+                        \end{array}
+                        \]
+                    </div>
+                </div>
+                <div class="slide-texto">
+                    <div class="retangulo">
+                        <strong>c)</strong> 8 − \( \dfrac{1}{3} \) = \( \dfrac{8}{1} \) − \( \dfrac{1}{3} \) =\(
+                        \dfrac{24−1}{3}\) = \(
+                        \dfrac{23}{3} \)
+                    </div>
+                </div>
+            </div>
+        
+            <button class="seta-texto esquerda" onclick="mudarSlideTexto(this, -1)">&#10094;</button>
+            <button class="seta-texto direita" onclick="mudarSlideTexto(this, 1)">&#10095;</button>
+        
+            <div class="slider-texto-indicadores">
+            </div>
+        </section>
+        <br>
+        <p>
+            <i><strong>Atenção</strong></i>: Após encontrar o mmc, devemos dividir pelo denominador e multiplicar o resultado
+            pelo numerador
+            ou transformar em frações equivalentes.
+        </p>
+        <div class="faixa-verde">
+            <h1 class="titulo-secao" style="font-size: 22px !important;">
+                1.2 MULTIPLICAÇÃO
+            </h1>
+        </div>
+        <p>
+            Para multiplicar duas ou mais frações, devemos multiplicar numerador com numerador e denominador
+            com denominador. Quer ver como isso funciona na prática? Use as setas para explorar os exemplos.
+        </p>
+        <br>
+        <section class="slider-texto-container tema-verde" data-slider-id="2">
+            <!-- conteúdo do slider 2 -->
+            <div class="slider-texto-wrapper">
+                <div class="slide-texto ativo">
+                    <div class="retangulo">
+                        <strong>a)</strong> \( \dfrac{3}{5} \)⋅\( \dfrac{4}{7} \) = \( \dfrac{3 × 4}{5 × 7}\) = \(
+                        \dfrac{12}{35} \)
+                    </div>
+                </div>
+                <div class="slide-texto">
+                    <div class="retangulo">
+                        <strong>b)</strong> − \( \dfrac{8}{2} \) × \( \dfrac{1}{5} \) = − \( \dfrac{8}{10} \) = − \(
+                        \dfrac{4}{5} \)
+                    </div>
+                </div>
+                <div class="slide-texto">
+                    <div class="retangulo">
+                        <strong>c)</strong> \( \dfrac{1}{5} \)⋅\( \dfrac{4}{8} \) ⋅\( \dfrac{2}{3} \) = \( \dfrac{8}{120}\) = \(
+                        \dfrac{1}{15} \)
+                    </div>
+                </div>
+                <div class="slide-texto">
+                    <div class="retangulo">
+                        <strong>d)</strong> \( \dfrac{1}{5} \)⋅\( \dfrac{2}{3} \) ⋅ \({6}\) = \( \dfrac{1}{5}\) ⋅ \(
+                        \dfrac{2}{3} \) ⋅ \( \dfrac{6}{1} \) = \( \dfrac{12}{15} \) = \( \dfrac{4}{5} \)
+                    </div>
+                </div>
+            </div>
+        
+            <button class="seta-texto esquerda" onclick="mudarSlideTexto(this, -1)">&#10094;</button>
+            <button class="seta-texto direita" onclick="mudarSlideTexto(this, 1)">&#10095;</button>
+        
+            <div class="slider-texto-indicadores">
+            </div>
+        </section>
+        <br>
+        <div class="faixa-verde">
+            <h1 class="titulo-secao" style="font-size: 22px !important;">
+                1.3 DIVISÃO
+            </h1>
+        </div>
+        <p>
+            Para dividir duas frações, devemos conservar a primeira e multiplicar pelo inverso da segunda. Vamos
+            conferir os exemplos juntos?
+        </p>
+        <br>
+        <section class="slider-texto-container tema-verde" data-slider-id="2">
+            <!-- conteúdo do slider 2 -->
+            <div class="slider-texto-wrapper">
+                <div class="slide-texto ativo">
+                    <div class="retangulo">
+                        <strong>a)</strong> \( \dfrac{3}{5} \)÷\( \dfrac{4}{7} \) = \( \dfrac{3}{5}\) ⋅\(
+                        \dfrac{7}{4} \) = \( \dfrac{21}{20} \)
+                    </div>
+                </div>
+                <div class="slide-texto">
+                    <div class="retangulo">
+                        <strong>b)</strong> −\( \dfrac{8}{3} \) :2 = − \( \dfrac{8}{3} \) : \(
+                        \dfrac{2}{1} \) = − \( \dfrac{8}{3} \) ⋅ \( \dfrac{1}{2} \) = − \( \dfrac{8}{6} \) = − \( \dfrac{4}{3}
+                        \)
+                    </div>
+                </div>
+                <div class="slide-texto">
+                    <div class="retangulo">
+                        <strong>c)</strong> \( \dfrac{\dfrac{1}{3}}{\dfrac{-2}{5}} = \dfrac{1}{3} \times \left( \dfrac{-5}{2}
+                        \right) = -\dfrac{5}{6} \)
+                    </div>
+                </div>
+                <div class="slide-texto">
+                    <div class="retangulo">
+                        <strong>d)</strong> \( \dfrac{\dfrac{10}{7}}{{2}} = \dfrac{\dfrac{10}{7}}{\dfrac{2}{1}} = \dfrac{10}{7}
+                        ⋅ \dfrac{2}{1} \) =
+                        \( \dfrac{10}{14} \) = \( \dfrac{5}{7} \)
+                    </div>
+                </div>
+        
+            </div>
+        
+            <button class="seta-texto esquerda" onclick="mudarSlideTexto(this, -1)">&#10094;</button>
+            <button class="seta-texto direita" onclick="mudarSlideTexto(this, 1)">&#10095;</button>
+        
+            <div class="slider-texto-indicadores">
+            </div>
+        </section>
+        <br>
+        <div class="faixa-verde">
+            <h1 class="titulo-secao" style="font-size: 22px !important;">
+                1.4 EXPRESSÕES COM NÚMEROS FRACIONÁRIOS
+            </h1>
+        </div>
+        <p>
+            Para resolver expressões numéricas, devemos seguir uma ordem operacional específica. Primeiramente
+            devemos realizar as multiplicações e divisões (na ordem que aparecem). Em seguida, realizar as adições
+            e subtrações.
+        </p>
+        <p>
+            Nas expressões em que aparecem parênteses, colchetes e chaves, primeiro devemos eliminar parênteses
+            “( )”, depois eliminar colchetes “[ ]” e, por fim, eliminar chaves “{ }”. Descubra os exemplos navegando
+            pelas setas a seguir.
+        </p>
+        <br>
+        <section class="slider-texto-container tema-verde" data-slider-id="2">
+            <!-- conteúdo do slider 2 -->
+            <div class="slider-texto-wrapper">
+                <div class="slide-texto ativo">
+                    <div class="retangulo">
+                        <strong>a)</strong> \[\quad \dfrac{1}{3} + \left( 2 - \dfrac{4}{5} ⋅ \dfrac{8}{3} \right)\]
+                        \[\dfrac{1}{3} + \left( 2 - \dfrac{4}{5} ⋅ \dfrac{8}{3} \right) =\]
+                        \[\dfrac{1}{3} + \left(\dfrac{2}{\color{blue}{1}} −\dfrac{32}{15}\right) = \dfrac{1}{3} + \left(
+                        \dfrac{30 - 32}{15} \right)
+                        = \dfrac{1}{3} + \left( \dfrac{-2}{15} \right) =\]
+                        \[\dfrac{1}{3} - \dfrac{2}{15} = \dfrac{5 - 2}{15}\]
+                        \[\dfrac{3}{15} = \dfrac{1}{5}\]
+                    </div>
+                </div>
+                <div class="slide-texto">
+                    <div class="retangulo">
+                        <strong>b)</strong> \[1\dfrac{1}{3} + 4\dfrac{3}{2} - 5\dfrac{4}{3} \cdot 2\dfrac{1}{4}\]
+                        \[1\dfrac{1}{3} + 4\dfrac{3}{2} - 5\dfrac{4}{3} \cdot 2\dfrac{1}{4}
+                        = \dfrac{4}{3} + \dfrac{11}{2} - \dfrac{19}{3} \cdot \dfrac{9}{4}
+                        = \dfrac{4}{3} + \dfrac{11}{2} - \dfrac{171}{12} =\]
+                        \[\dfrac{16 + 66 - 171}{12} = -\dfrac{89}{12} = -7\dfrac{5}{12}\]
+                    </div>
+                </div>
+                <div class="slide-texto">
+                    <div class="retangulo">
+                        <strong>c)</strong> \[
+                        \dfrac{1}{2} + \dfrac{\dfrac{3}{4} \cdot \dfrac{2}{5} + 3}{\dfrac{2}{3} - 4}
+                        \]
+                        \[
+                        \dfrac{1}{2} + \dfrac{\dfrac{3}{4} \cdot \dfrac{2}{5} + 3}{\dfrac{2}{3} - 4}
+                        = \dfrac{1}{2} + \dfrac{\dfrac{6}{20} + 3}{\dfrac{−10}{3}}
+                        = \dfrac{1}{2} + \dfrac{\dfrac{66}{20}}{-\dfrac{10}{3}}
+                        = \dfrac{1}{2} + \dfrac{66}{20} \cdot \left( -\dfrac{3}{10} \right)
+                        = \dfrac{1}{2} - \dfrac{198}{200}
+                        =\]
+                        \[
+                        \dfrac{1}{2} - \dfrac{99}{100}
+                        = \dfrac{50 - 99}{100}
+                        = -\dfrac{49}{100}
+                        \]
+                    </div>
+                </div>
+                <div class="slide-texto">
+                    <div class="retangulo">
+                        <strong>d)</strong>
+                        \[0{,}2 + \Biggl\{ 2 - \Biggl[ \dfrac{1}{3} ⋅
+                        \Biggl( \dfrac{1}{2} - \dfrac{3}{4} \div \dfrac{1}{5} \Biggr)
+                        \Biggr] \Biggr\}\]
+                        \[0{,}2 + \Biggl\{ 2 - \Biggl[ \dfrac{1}{3} ⋅
+                        \Biggl( \dfrac{1}{2} - \dfrac{3}{4} \div \dfrac{1}{5} \Biggr)
+                        \Biggr] \Biggr\}
+                        = \dfrac{2}{10} + \Biggl\{ 2 - \Biggl[ \dfrac{1}{3} ⋅
+                        \Biggl( \dfrac{1}{2} - \dfrac{3}{4} \cdot \dfrac{5}{1} \Biggr)
+                        \Biggr] \Biggr\} =\]
+                        \[\dfrac{2}{10} + \Biggl\{ 2 - \Biggl[ \dfrac{1}{3} ⋅
+                        \Biggl( \dfrac{1}{2} - \dfrac{15}{4} \Biggr)
+                        \Biggr] \Biggr\}
+                        = \dfrac{2}{10} + \Biggl\{ 2 - \Biggl[ \dfrac{1}{3} ⋅
+                        \Biggl( -\dfrac{13}{4} \Biggr)
+                        \Biggr] \Biggr\} =\]
+                        \[\dfrac{2}{10} + \Biggl\{ 2 - \Biggl[ -\dfrac{13}{12} \Biggr] \Biggr\}
+                        = \dfrac{2}{10} + \dfrac{37}{12}
+                        = \dfrac{197}{60}\]
+                    </div>
+                </div>
+        
+            </div>
+        
+            <button class="seta-texto esquerda" onclick="mudarSlideTexto(this, -1)">&#10094;</button>
+            <button class="seta-texto direita" onclick="mudarSlideTexto(this, 1)">&#10095;</button>
+        
+            <div class="slider-texto-indicadores">
+            </div>
+        </section>
+        <br>
+    </section>
+    <section class="secao2" id="secao2">
+        <div class="faixa-verde">
+            <h1 class="titulo-secao">
+                2. PROBLEMAS ENVOLVENDO OPERAÇÕES COM FRAÇÕES
+            </h1>
+        </div>
+        <p>
+            Para resolver um problema, leia o enunciado na íntegra, com concentração, e anote os dados importantes
+            para depois resolvê-lo.
+        </p>
+        <br>
+        <br>
+        <div class="quadro-problema">
+            <div class="topo">
+                <p>
+                    <strong>1</strong>. Em uma sala de aula há 36 alunos, dos quais
+                    \( \dfrac{7}{12} \) são meninas. Determine o número de meninas dessa sala.
+                </p>
+        
+            </div>
+            <div class="resolucao">
+                <p><strong>Resolução:</strong> Aqui vamos calcular
+                    \( \dfrac{7}{12} \) de um total de 36 alunos. Então podemos usar a multiplicação da
+                    fração \( \dfrac{7}{12} \) pelo inteiro 36.</p>
+                <br><br>
+                <p style="font-size: 22px; line-height: 2; text-align: center;">
+                    \( \dfrac{7}{12} \)<i>de</i> 36 = \( \dfrac{7}{12} \) ⋅ 36 = \( \dfrac{252}{12} \) = 21
+                </p>
+                <br><br>
+                <p>
+                    A ordem entre realizar uma multiplicação e uma divisão é indiferente. Observe que na resolução efetuamos
+                    \( {7}⋅{36} = {252}\) e o resultado dividimos por 12. Também é possível, dividir primeiro, ou seja
+                    \( \dfrac{36}{12} = {3}\) e
+                    multiplicar esse número por 7, resultando em 21.
+                </p>
+                <br>
+                <p><strong>Resposta:</strong>
+                    Logo, há 21 meninas nessa sala de aula.
+                </p>
+            </div>
+        </div>
+        
+        <div class="quadro-problema">
+            <div class="topo">
+                <p>
+                    <strong>2</strong>. Uma determinada empresa necessita contratar mais um doze avos de colaboradores. Sabendo
+                    que a
+                    empresa já conta com 60 colaboradores, determine o número de colaboradores a serem contratados.
+                </p>
+            </div>
+            <div class="resolucao">
+                <p><strong>Resolução:</strong>
+                    Precisamos determinar a fração \( \dfrac{1}{12} \)
+                    (um doze avos) de 60, para saber quantos colaboradores devem ser contratados.
+                </p>
+                <br><br>
+                <p style="font-size: 22px; line-height: 2; text-align: center;">
+                    \( \dfrac{1}{12} \)<i>de</i> 60 = \( \dfrac{1}{12} \) ⋅ 60 = \( \dfrac{60}{12} \) = 5
+                </p>
+                <br><br>
+                <p>
+                    Observe que fizemos \( {60}⋅{1} = {60}\) e posteriormente, dividimos por 12.
+                    O resultado será o mesmo se dividirmos \( \dfrac{60}{12} = {5}\)
+                    e multiplicarmos o resultado por 1, \( {5}⋅{1} = {5}.\)
+                </p>
+                <p><strong>Resposta:</strong>
+                    Portanto, deverão ser contratados mais 5 colaboradores.
+                </p>
+            </div>
+        </div>
+        
+        <div class="quadro-problema">
+            <div class="topo">
+                <p>
+                    <strong>3</strong>. Um turno de trabalho necessita produzir 240 peças.
+                    Após duas horas de trabalho foram fabricadas \( \dfrac{30}{48} \) do total. Determine:
+                </p>
+                <br>
+                <p>
+                    <strong>a</strong>. quantas peças ainda faltam ser produzidas.
+                </p>
+        
+                <p>
+                    <strong>b</strong>. quantas horas de trabalho ainda serão necessárias.
+                </p>
+            </div>
+            <div class="resolucao">
+                <p><strong>Resolução:</strong>
+                    <br>
+                    <strong>a</strong>. Podemos simplificar a fração \( \dfrac{30}{48} \)
+                    para facilitar o entendimento. Para isso, vamos dividir o numerador e o denominador por 6.
+                </p>
+                <br>
+                <p style="text-align: left;">
+                    Peças produzidas → \(\dfrac{30^{\color{red}{:6}}}{48^{\color{red}{:6}}} \) =
+                    \( \dfrac{5}{8} \)
+                </p>
+                <p>
+                    Podemos pensar da seguinte forma, algo foi dividido em 8 partes iguais, das quais 5 já foram utilizadas,
+                    então faltam apenas 3 partes do todo.
+                </p>
+                <br>
+                <!-- Imagem do exercício -->
+                <div class="figura-container-reduzida">
+                    <img class="zoomable"
+                        src="https://res.cloudinary.com/di4ria1pf/image/upload/v1760637376/figura_exerc%C3%ADcio03_wwyudx.png"
+                        alt="">
+                </div>
+                <br>
+                <p style="text-align: left;">
+                    Peças produzidas → \( \dfrac{3}{8} \) <i>de</i> 240 = \(\dfrac{3}{8} ⋅ {240}\) =
+                    \( \dfrac{720}{8} = {90}\) ou \( \dfrac{240}{8} = {30}⋅{3} = {90}\)
+                </p>
+                <br>
+                <p><strong>Resposta:</strong>
+                    Restam 90 peças para serem produzidas.
+                </p>
+                <br>
+                <p>
+                    <strong>b</strong>. Para determinar quantas horas de trabalho ainda serão necessárias, verificamos que, em
+                    duas horas de
+                    trabalho foram produzidas \( {240} − {90} = {150}\) peças.
+                </p>
+                <br>
+                <p>
+                    Ou seja, em uma hora tem-se \({150} \div {2} = {75}\) peças.
+                </p>
+                <p>
+                    Se dividirmos 90 por 75, obteremos o tempo necessário para essa produção.
+                </p>
+                <br><br>
+                <p style="font-size: 19px; line-height: 2; text-align: center;">
+                    \( 90 \div 75 = \dfrac{90}{75} = \dfrac{6}{5} = 1\dfrac{1}{5}h = 1,2h = 1h12min \)
+                </p>
+                <br><br>
+                <p>
+                    Observe que o resultado obtido foi \( 1{,}2h \), ou seja, 1 hora mais dois décimos de hora, ou ainda, mais
+                    \(
+                    \dfrac{1}{5} \) de hora.
+                    Se fizermos \( \dfrac{1}{5} \text{ de } 60 = \dfrac{60}{5} = 12 \) ou \( 0{,}2 \cdot 60 = 12 \)
+                    também. Por isso, \( 1{,}2h = 1\,hora\,e\,12\,minutos. \)
+                </p>
+                <br>
+                <p><strong>Resposta:</strong>
+                    Logo, será necessário mais 1 hora e 12 minutos de trabalho, considerando o mesmo rendimento
+                    das duas primeiras horas.
+                </p>
+            </div>
+        </div>
+        
+        <div class="quadro-problema">
+            <div class="topo">
+                <p>
+                    <strong>4</strong>. Uma empreiteira gastou 32 dias para cumprir dois quintos de uma determinada obra.
+                    Quantos dias, no
+                    total, foram planejados para a entrega da obra?
+                </p>
+            </div>
+            <div class="resolucao">
+                <p><strong>Resolução:</strong> Se considerarmos × o total de dias, sabemos que:
+                    <br><br>
+                <p style="font-size: 19px; line-height: 2; text-align: center;">
+                    \( \dfrac{2}{5} \) de x = \({32}\) ↔ \( \dfrac{2}{5} \) ⋅ x = \({32}\) ↔
+                    x = \({80}\) <i>dias</i>
+                </p>
+                <br>
+                <p>
+                    Podemos pensar também da seguinte forma, o todo foi dividido em 5 partes e duas delas equivalem a 32
+                    dias. Então cada parte equivale a \( \dfrac{32}{2} \) = \({16}\) dias.
+                </p>
+                <br><br>
+                <!-- Imagem do exercício -->
+                <div class="figura-container-reduzida">
+                    <img class="zoomable"
+                        src="https://res.cloudinary.com/di4ria1pf/image/upload/v1760639786/figura_exerc%C3%ADcio04_l1fulr.png"
+                        alt="">
+                </div>
+                <br>
+                <p>
+                    Se são 5 partes no total, então \({5}\) ⋅ \({16}\) = \({80}\)
+                </p>
+                <br>
+                <p><strong>Resposta:</strong>
+                    Portanto, foram planejados 80 dias para a entrega da obra.
+                </p>
+            </div>
+        </div>
+        <div class="quadro-problema">
+            <div class="topo">
+                <p>
+                    <strong>5</strong>. Três empreiteiras diferentes foram contratadas para construírem uma nova estrada.
+                    Sabe-se que essa
+                    estrada tem, no total, 306 km. A empreiteira A construiu dois sextos do total, enquanto a empreiteira B
+                    construiu quatro nonos do total. Quantos quilômetros foram construídos pela empreiteira C?
+                </p>
+            </div>
+            <div class="resolucao">
+                <p>
+                    <strong>Resolução:</strong>
+                    <br><br>A empreiteira A construiu \( \dfrac{2}{6} \) de \({306}\) que equivalem a
+                    \( \dfrac{2}{6} \) ⋅ \({306}\) = 102 <i>km</i>.
+                </p>
+                <br>
+                <p>
+                    A empreiteira B construiu \( \dfrac{4}{9} \) de \({306}\), ou seja,
+                    \( \dfrac{4}{9} \) ⋅ \({306}\) = 136 <i>km</i>.
+                </p>
+                <br>
+                <p>
+                    A empreiteira C construiu o restante. \( {306} − {102} − {136} = {68}\) <i>km</i>.
+                </p>
+                <br>
+                <p><strong>Resposta:</strong>
+                    Portanto, a empreiteira C construiu 68 km.
+                </p>
+            </div>
+        </div>
+        
+        <div class="quadro-problema">
+            <div class="topo">
+                <p>
+                    <strong>6</strong>. Uma distribuidora de lâmpadas receberá um estoque de 11.202 lâmpadas. Esse total de
+                    lâmpadas
+                    será fornecido por três diferentes fornecedores. O primeiro fornecedor deverá entregar metade da quantia
+                    entregue pelo segundo fornecedor, que entregará dois terços do total do terceiro fornecedor. Determine o
+                    total de lâmpadas que será entregue pelo segundo fornecedor.
+                </p>
+            </div>
+            <div class="resolucao">
+                <p>
+                    <strong>Resolução:</strong> Como ainda não sabemos as quantias, vamos começar determinando que o 3º
+                    fornecedor
+                    entregará <i>X</i> unidades. O 2º fornecedor entregará dois terços de x, ou seja, \( \dfrac{2}{3} x\).
+                    E o 1º fornecedorentregará metade de \( \dfrac{2}{3} x\), ou seja, \( \dfrac{1}{2} \) ⋅ \( \dfrac{2}{3} x\)
+                    = \( \dfrac{1}{3} x\). O total das quantidades entregues pelos três fornecedores deve ser 11.202 unidades de
+                    lâmpadas.
+                </p>
+                <br>
+                <p style="font-size: 22px; line-height: 2; text-align: center;">
+                    \( x + \dfrac{2}{3}x + \dfrac{1}{3}x = {11202}\)
+                </p>
+        
+                <p style="font-size: 22px; line-height: 2; text-align: center;">
+                    \[\dfrac{3x + 2x + x}{3} = \dfrac{33606}{3}\]
+                </p>
+        
+                <p style="font-size: 22px; line-height: 2; text-align: center;">
+                    \[6x = 33606\]
+                </p>
+        
+                <p style="font-size: 22px; line-height: 2; text-align: center;">
+                    \[x = 5601\]
+                </p>
+                <br>
+                <p>
+                    2º fornecedor: \( \dfrac{2}{3} \) ⋅ \( {5601} \) = \( {3734} \) lâmpadas.
+                </p>
+                <br>
+                <p><strong>Resposta:</strong>
+                    O segundo fornecedor entregará 3.734 lâmpadas.
+                </p>
+            </div>
+        </div>
+        </div>
+        <br>
+        <div class="faixa-verde">
+            <h1 class="titulo-secao" style="font-size: 19px !important;">
+                Assista aos vídeos abaixo:
+            </h1>
+        </div>
+        <!-- Container dos vídeos -->
+        <div class="container-videos">
+            <div class="video-play-wrapper">
+                <div class="video-play-btn" data-video="" onclick="openVideoModal(this)">
+                    <i class='bx bx-play'></i>
+                </div>
+                <div class="video-play-text">Clique para assistir</div>
+            </div>
+        
+            <div class="video-play-wrapper">
+                <div class="video-play-btn" data-video="" onclick="openVideoModal(this)">
+                    <i class='bx bx-play'></i>
+                </div>
+                <div class="video-play-text">Clique para assistir</div>
+            </div>
+        </div>
+        
+        <!-- Modal com o vídeo -->
+        <div id="videoModal" class="video-modal" onclick="closeVideoModal()">
+            <div class="video-content" onclick="event.stopPropagation()">
+                <i class="bx bxs-x-circle close-btn" onclick="closeVideoModal()"></i>
+                <iframe id="videoIframe" width="800" height="450" src="" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+    <!-- Seção Conclusão -->
+    <section id="conclusao" class="conclusao">
+        <!-- Conteúdo -->
+        <div class="conteudo-conclusao">
+            <div class="caixa-texto">
+                <h1 class="titulo-conclusao">CONCLUSÃO</h1>
+                <p>
+                    Nesta Unidade de Estudos, revisamos as regras básicas das operações no conjunto dos números reais
+                    — adição, subtração, multiplicação e divisão — e aplicamos esses conceitos em diferentes situações
+                    práticas. Esse reforço contribui para o domínio de fundamentos essenciais da Matemática e amplia a
+                    capacidade de resolução de problemas no cotidiano e em contextos acadêmicos.
+                </p>
+    
+            </div>
+        </div>
+        <div id="download" class="download-section">
+            <a href="https://drive.google.com/uc?export=download&id=1innmziPXhinagESC7o8RVZt3aH_Q9VzH" class="download-btn">
+                Baixar PDF <i class="fas fa-download"></i> <!-- Ícone de download -->
+            </a>
+        </div>
+    </section>
+    <!-- Seção Referências-->
+    <section id="referencias" class="referencias">
+        <!-- Conteúdo -->
+        <div class="conteudo-referencias">
+            <div class="caixa-texto">
+                <h1 class="titulo-referencias">REFERÊNCIAS</h1>
+                <p>GOUVEIA, R. Adição e Subtração de Frações. <strong>Toda Matéria</strong>, 29 jun. 2020. Disponível em:
+                    <a href="https://www.todamateria.com.br/adicao-e-subtracao-de-fracoes/"
+                        target="_blank">https://www.todamateria.com.br/adicao-e-subtracao-de-fracoes/</a>
+                    Acesso em: 25 jan. 2021.
+                </p>
+                
+                <p>SILVA, M. N. P. Multiplicação e Divisão de Frações. <strong>Mundo Educação</strong>, [s.d.]. Disponível em:
+                    <a href="https://mundoeducacao.bol.uol.com.br/matematica/multiplicacao-divisao-fracoes.htm"
+                        target="_blank">https://mundoeducacao.bol.uol.com.br/matematica/multiplicacao-divisao-fracoes.htm</a>
+                    Acesso em: 25 jan. 2021.
+                </p>
+                <p>SILVA, M. N. P. Passos para resolução de expressões numéricas. <strong>Mundo Educação</strong>, [s.d.]. Disponível em:
+                    <a href="https://mundoeducacao.bol.uol.com.br/matematica/passos-para-resolucao-expressoes-numericas.htm"
+                        target="_blank">https://mundoeducacao.bol.uol.com.br/matematica/passos-para-resolucao-expressoes-numericas.htm</a>
+                    Acesso em: 25 jan. 2021.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- Seção com os créditos e ficha técnica -->
+    <section class="ficha-tecnica">
+        <p>CASA NOSSA SENHORA DA PAZ – AÇÃO SOCIAL FRANCISCANA, PROVÍNCIA FRANCISCANA DA <br>
+            IMACULADA CONCEIÇÃO DO BRASIL – ORDEM DOS FRADES MENORES</p>
+        <br>
+        <p><strong>GESTOR DO CENTRO DE INOVAÇÃO E SOLUÇÕES EDUCACIONAIS - CISE</strong>
+            Franklin Portela Correia</p>
+    
+        <p><strong>COORDENADORA DO PROGRAMA DE ATUALIZAÇÃO</strong>
+            Flávia Cristina Franco de Lima Rosa</p>
+    
+        <p><strong>SUPERVISORA EDUCACIONAL</strong>
+            Juliane Cristine Batista</p>
+    
+        <p><strong>DESIGNER INSTRUCIONAL</strong>
+            Ana Angelica Miranda Ramos</p>
+    
+        <p><strong>PROJETO GRÁFICO</strong>
+            Andréa Calegari<br>
+            Lucas Ichimaru Testa</p>
+    
+        <p><strong>DIAGRAMADORES</strong>
+            Andréa Calegari<br>
+            Lucas Ichimaru Testa</p>
+    
+        <p><strong>DESENVOLVEDOR</strong>
+            Pedro Vinicius Pires de Oliveira Dias</p>
+    
+        <p><strong>PRODUTOR AUDIOVISUAL</strong>
+            Cassio Martins de Carvalho</p>
+    
+        <p><strong>EDIÇÃO DE VÍDEOS</strong>
+            Diogo Lefort Silva<br>
+            Rafael da Silva Oliveira<br>
+            Hugo Henrique Ferreira da Silva</p>
+    
+        <br><br>
+        <p><span class="paragraforeduzido">
+                © 2026 Universidade São Francisco<br>
+                Avenida São Francisco de Assis, 218<br>
+                CEP 12916-900 – Bragança Paulista/SP
+        </p></span>
+    </section>
+    <footer class="footer">
+        <p>Copyright © de Universidade São Francisco</p>
+        <hr class="footer-divider">
+        <span class="fonte-menor">Todos os direitos reservados. Este ebook ou
+            qualquer parte dele não pode ser reproduzido ou usado em quaisquer formas (eletrônico,
+            gravação, fotocópia, distribuição pela Internet ou outros) sem autorização
+            expressa, por escrito, da <strong>Universidade São Francisco.</strong></span>
+    </footer>
+    <script>
+        // Navbar
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            const menu = document.querySelector('.navbar ul');
+            const icons = document.querySelectorAll('.menu-toggle i'); // Seleciona ambos os ícones
+
+            menu.classList.toggle('show'); // Alterna a visibilidade do menu
+
+            // Alterna entre o ícone de abrir (menu) e o ícone de fechar (x)
+            icons[0].style.display = icons[0].style.display === 'none' ? 'block' : 'none'; // Mostra ou esconde o ícone de menu
+            icons[1].style.display = icons[1].style.display === 'none' ? 'block' : 'none'; // Mostra ou esconde o ícone de fechar
+        });
+        // Fechar o menu ao clicar em um link
+        const links = document.querySelectorAll('.navbar ul li a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.querySelector('.navbar ul');
+                const icons = document.querySelectorAll('.menu-toggle i');
+
+                // Fecha o menu ao clicar no link
+                menu.classList.remove('show');
+                icons[0].style.display = 'block'; // Exibe o ícone de menu
+                icons[1].style.display = 'none'; // Esconde o ícone de fechar
+            });
+        });
+        // Captura o elemento navbar
+        const navbar = document.querySelector('.navbar');
+
+        // Função que altera a opacidade da navbar
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { // Quando o scroll for maior que 50px
+                navbar.style.backgroundColor = 'rgba(159, 67, 190, 0.8)'; // Opacidade 80%
+            } else {
+                navbar.style.backgroundColor = '#9F43BE'; // Cor original sem transparência
+            }
+        });
+
+
+        // Cria o container lightbox
+        const lightbox = document.createElement("div");
+        lightbox.classList.add("lightbox");
+        document.body.appendChild(lightbox);
+
+        let scale = 1; // nível de zoom
+        let isDragging = false;
+        let startX, startY, translateX = 0, translateY = 0;
+
+        document.querySelectorAll(".zoomable").forEach(img => {
+            img.addEventListener("click", () => {
+                const imgClone = document.createElement("img");
+                imgClone.src = img.src;
+                imgClone.alt = img.alt;
+                imgClone.style.objectFit = "contain"; // garante que abre ajustada
+                imgClone.style.maxWidth = "100%";
+                imgClone.style.maxHeight = "100%";
+
+                lightbox.innerHTML = "";
+                lightbox.appendChild(imgClone);
+                lightbox.style.display = "flex";
+                scale = 1;
+                translateX = translateY = 0;
+                updateTransform(imgClone);
+
+                // Mensagem de dica
+                const hint = document.createElement("div");
+                hint.classList.add("lightbox-hint");
+                hint.innerText = "Use a roda do mouse para dar zoom e arraste para mover";
+                lightbox.appendChild(hint);
+
+                // Remove a dica após 4s
+                setTimeout(() => {
+                    if (hint && hint.parentNode) {
+                        hint.remove();
+                    }
+                }, 4000);
+
+                // Zoom com scroll
+                imgClone.addEventListener("wheel", e => {
+                    e.preventDefault();
+                    scale += e.deltaY * -0.001;
+                    scale = Math.min(Math.max(1, scale), 5); // limite de zoom
+                    updateTransform(imgClone);
+                });
+
+                // Arrastar imagem
+                imgClone.addEventListener("mousedown", e => {
+                    isDragging = true;
+                    startX = e.clientX - translateX;
+                    startY = e.clientY - translateY;
+                    lightbox.style.cursor = "grabbing";
+                });
+
+                window.addEventListener("mousemove", e => {
+                    if (!isDragging) return;
+                    translateX = e.clientX - startX;
+                    translateY = e.clientY - startY;
+                    updateTransform(imgClone);
+                });
+
+                window.addEventListener("mouseup", () => {
+                    isDragging = false;
+                    lightbox.style.cursor = "grab";
+                });
+            });
+        });
+
+        // Fecha clicando fora da imagem
+        lightbox.addEventListener("click", e => {
+            if (e.target === lightbox) {
+                lightbox.style.display = "none";
+            }
+        });
+
+        // Função para aplicar zoom + movimento
+        function updateTransform(img) {
+            img.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+        }
+        document.querySelectorAll('.slider-texto-container').forEach(initSliderTexto);
+
+        function initSliderTexto(container) {
+            const slides = container.querySelectorAll('.slide-texto');
+            const indicatorsContainer = container.querySelector('.slider-texto-indicadores');
+
+            indicatorsContainer.innerHTML = ''; // Limpa indicadores anteriores
+
+            // Cria os dots dinamicamente
+            slides.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('dot-texto');
+                dot.onclick = () => mostrarSlide(index);
+                indicatorsContainer.appendChild(dot);
+            });
+
+            const dots = container.querySelectorAll('.dot-texto');
+            let currentIndex = 0;
+
+            function mostrarSlide(index) {
+                slides.forEach(slide => slide.classList.remove('ativo'));
+                dots.forEach(dot => dot.classList.remove('ativo'));
+
+                currentIndex = (index + slides.length) % slides.length;
+
+                slides[currentIndex].classList.add('ativo');
+                dots[currentIndex].classList.add('ativo');
+            }
+
+            // Armazena a função no container para chamadas externas
+            container.mostrarSlideTexto = mostrarSlide;
+            container.getCurrentIndex = () => currentIndex;
+            mostrarSlide(0);
+        }
+
+        // Chamado pelos botões de seta
+        function mudarSlideTexto(button, direcao) {
+            const container = button.closest('.slider-texto-container');
+            const currentIndex = container.getCurrentIndex();
+            container.mostrarSlideTexto(currentIndex + direcao);
+        }
+
+        // Chamado pelos dots (não necessário, mas deixado por compatibilidade)
+        function irParaSlideTexto(dot, index) {
+            const container = dot.closest('.slider-texto-container');
+            container.mostrarSlideTexto(index);
+        }
+
+        document.querySelectorAll('.acordeon-header, .acordeon-headerb, .acordeon-headerc, .acordeon-headerd').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const isVisible = content.style.display === 'block';
+                content.style.display = isVisible ? 'none' : 'block';
+                const icon = header.querySelector('.acordeon-icon');
+                if (icon) {
+                    icon.classList.toggle('bx-chevron-up', !isVisible);
+                    icon.classList.toggle('bx-chevron-down', isVisible);
+                }
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const videoModal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoIframe');
+
+            // Função para abrir modal
+            window.openVideoModal = function (element) {
+                const videoLink = element.getAttribute("data-video");
+                iframe.src = videoLink;
+                videoModal.style.display = "flex";
+            }
+
+            // Função para fechar modal
+            window.closeVideoModal = function () {
+                iframe.src = "";
+                videoModal.style.display = "none";
+            }
+
+            // Fecha ao clicar fora do conteúdo
+            videoModal.addEventListener('click', function (event) {
+                if (event.target === this) {
+                    closeVideoModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
