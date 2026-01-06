@@ -770,7 +770,7 @@
                     from { transform: scale(0.7); opacity: 0; }
                     to { transform: scale(1); opacity: 1; }
                 }
-
+        
          .quadro-violeta {
             width: 90%;
             max-width: 650px;
@@ -1883,7 +1883,7 @@
         }
     </style>
 </head>
-<body>
+<body> 
     <!-- Navbar -->
     <div class="navbar">
         <div class="logo">
@@ -2926,12 +2926,25 @@
                 const imgClone = document.createElement("img");
                 imgClone.src = img.src;
                 imgClone.alt = img.alt;
-                imgClone.style.objectFit = "contain"; // garante que abre ajustada
+                imgClone.style.objectFit = "contain";
                 imgClone.style.maxWidth = "100%";
                 imgClone.style.maxHeight = "100%";
 
+                /* 🔥 Wrapper branco */
+                const imgWrapper = document.createElement("div");
+                imgWrapper.style.background = "#fff";
+                imgWrapper.style.padding = "20px";
+                imgWrapper.style.borderRadius = "8px";
+                imgWrapper.style.maxWidth = "90vw";
+                imgWrapper.style.maxHeight = "90vh";
+                imgWrapper.style.display = "flex";
+                imgWrapper.style.alignItems = "center";
+                imgWrapper.style.justifyContent = "center";
+
+                imgWrapper.appendChild(imgClone);
+
                 lightbox.innerHTML = "";
-                lightbox.appendChild(imgClone);
+                lightbox.appendChild(imgWrapper);
                 lightbox.style.display = "flex";
                 scale = 1;
                 translateX = translateY = 0;
